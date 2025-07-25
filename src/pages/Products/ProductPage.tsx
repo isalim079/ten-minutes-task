@@ -1,43 +1,39 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { useEffect, useState } from "react";
-import { getProductPageData } from "../../api/getProductPageData";
+import { useState } from "react";
 import TitleDescription from "./LeftLayout/TitleDescription";
-import type { ProductData } from "../../types/product";
 import Instructor from "./LeftLayout/Instructor";
 import HowTheCourse from "./LeftLayout/HowTheCourse";
+import WhatYouWillLearn from "./LeftLayout/WhatYouWillLearn";
+import { useProductsData } from "../../hooks/useProductsData";
 
 const ProductPage = () => {
-  const [productData, setProductData] = useState<ProductData | null>(null);
-  const [loading, setLoading] = useState(false);
   const [lang, setLang] = useState<"en" | "bn">("en");
-  const [error, setError] = useState<string | null>(null);
+  const { productsData, loading, error } = useProductsData(lang);
 
-  useEffect(() => {
-    setLoading(true);
-    getProductPageData(lang)
-      .then((res) => setProductData(res.data))
-      .catch((err) => setError(err.message))
-      .finally(() => setLoading(false));
-  }, [lang]);
+  /* filtering specific sections data */
+  const getSectionByType = (type: string) =>
+    productsData?.sections?.find((section) => section?.type === type);
 
-  console.log(productData);
+  const instructorSection = getSectionByType("instructors");
+  const featureSection = getSectionByType("features");
+  const pointerSection = getSectionByType("pointers");
+
+  console.log(productsData);
+
+  if (loading) return <p className="text-center py-10">Loading...</p>;
+  if (error) return <p className="text-center text-red-500">{error}</p>;
 
   return (
     <div className="max-w-7xl mx-auto grid lg:grid-cols-3 gap-10 py-10">
       {/* Left Layout */}
       <div className="lg:col-span-2">
         <TitleDescription
-          title={productData?.title}
-          description={productData?.description}
+          title={productsData?.title}
+          description={productsData?.description}
         />
-        <Instructor
-          instructorInfo={productData?.sections?.find(
-            (section) => section?.type === "instructors"
-          )}
-        />
-        <HowTheCourse features={productData?.sections?.find(
-            (section) => section?.type === "features"
-          )} />
+        <Instructor instructorInfo={instructorSection} />
+        <HowTheCourse features={featureSection} />
+        <WhatYouWillLearn pointers={pointerSection} />
       </div>
 
       {/* Right Layout */}
