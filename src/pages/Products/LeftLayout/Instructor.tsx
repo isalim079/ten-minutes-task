@@ -3,7 +3,7 @@ import type { Section } from "../../../types/product";
 const Instructor = ({
   instructorInfo,
 }: {
-  instructorInfo: Section | undefined;
+  instructorInfo?: Section;
 }) => {
   console.log(instructorInfo);
 

@@ -4,6 +4,7 @@ import { getProductPageData } from "../../api/getProductPageData";
 import TitleDescription from "./LeftLayout/TitleDescription";
 import type { ProductData } from "../../types/product";
 import Instructor from "./LeftLayout/Instructor";
+import HowTheCourse from "./LeftLayout/HowTheCourse";
 
 const ProductPage = () => {
   const [productData, setProductData] = useState<ProductData | null>(null);
@@ -29,13 +30,18 @@ const ProductPage = () => {
           title={productData?.title}
           description={productData?.description}
         />
-        <Instructor instructorInfo={productData?.sections?.find((section) => section?.type === "instructors")} />
+        <Instructor
+          instructorInfo={productData?.sections?.find(
+            (section) => section?.type === "instructors"
+          )}
+        />
+        <HowTheCourse features={productData?.sections?.find(
+            (section) => section?.type === "features"
+          )} />
       </div>
 
       {/* Right Layout */}
-      <div className="lg:col-span-1">
-        Right section
-      </div>
+      <div className="lg:col-span-1">Right section</div>
     </div>
   );
 };
