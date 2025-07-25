@@ -1,7 +1,9 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useEffect, useState } from "react";
 import { getProductPageData } from "../../api/getProductPageData";
 import TitleDescription from "./LeftLayout/TitleDescription";
 import type { ProductData } from "../../types/product";
+import Instructor from "./LeftLayout/Instructor";
 
 const ProductPage = () => {
   const [productData, setProductData] = useState<ProductData | null>(null);
@@ -27,6 +29,7 @@ const ProductPage = () => {
           title={productData?.title}
           description={productData?.description}
         />
+        <Instructor instructorInfo={productData?.sections?.find((section) => section?.type === "instructors")} />
       </div>
 
       {/* Right Layout */}

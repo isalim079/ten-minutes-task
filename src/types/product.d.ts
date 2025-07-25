@@ -1,7 +1,70 @@
+export interface MetaItem {
+  content: string;
+  type: string;
+  value: string;
+}
+
+export interface SchemaItem {
+  meta_name: string;
+  meta_value: string;
+  type: string;
+}
+
+export interface SectionValue {
+  id?: string;
+  name?: string;
+  description?: string;
+  title?: string;
+  subtitle?: string;
+  icon?: string;
+  color?: string;
+  text?: string;
+  image?: string;
+  slug?: string;
+  has_instructor_page?: boolean;
+  short_description?: string;
+  background_color?: string;
+  background_img?: string;
+  checklist_text_color?: string;
+  end_at?: string;
+  start_at?: string;
+  template?: string;
+  background?: {
+    image?: string;
+    primary_color?: string;
+    secondary_color?: string;
+  };
+  cta?: {
+    clicked_url?: string;
+    color?: string;
+    text?: string;
+  };
+  description_color?: string;
+  thumbnail?: string;
+  title_color?: string;
+  top_left_icon_img?: string;
+  checklist?: string[];
+  file_type?: string;
+  file_url?: string;
+  video_thumbnail?: string;
+  profile_image?: string;
+  testimonial?: string;
+  thumb?: string;
+  video_type?: string;
+  video_url?: string;
+  answer?: string;
+  question?: string;
+  [key: string]: unknown;
+}
+
 export interface Checklist {
-  id?: number;
+  id?: number | string;
   title?: string;
   description?: string;
+  color?: string;
+  icon?: string;
+  list_page_visibility?: boolean;
+  text?: string;
   [key: string]: unknown;
 }
 
@@ -11,8 +74,12 @@ export interface CtaText {
 }
 
 export interface Medium {
-  type: string;
-  url: string;
+  type?: string;
+  url?: string;
+  name?: string;
+  resource_type?: string;
+  resource_value?: string;
+  thumbnail_url?: string;
   [key: string]: unknown;
 }
 
@@ -28,14 +95,18 @@ export interface Section {
   type: string;
   title?: string;
   content?: string;
-  [key: string]: unknown;
+  name?: string;
+  description?: string;
+  bg_color?: string;
+  order_idx?: number;
+  values?: SectionValue[];
 }
 
 export interface Seo {
-  defaultMeta: Record<string, unknown>[];
+  defaultMeta: MetaItem[];
   description: string;
   keywords: string[];
-  schema: Record<string, unknown>[];
+  schema: SchemaItem[];
   title: string;
 }
 
