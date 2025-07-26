@@ -6,6 +6,7 @@ import HowTheCourse from "./LeftLayout/HowTheCourse";
 import WhatYouWillLearn from "./LeftLayout/WhatYouWillLearn";
 import { useProductsData } from "../../hooks/useProductsData";
 import CourseExecutiveFeature from "./LeftLayout/CourseExecutiveFeature";
+import CourseDetails from "./LeftLayout/CourseDetails";
 
 const ProductPage = () => {
   const [lang, setLang] = useState<"en" | "bn">("en");
@@ -19,8 +20,7 @@ const ProductPage = () => {
   const featureSection = getSectionByType("features");
   const pointerSection = getSectionByType("pointers");
   const exclusiveFeaturesSection = getSectionByType("feature_explanations");
-
-  console.log(productsData);
+  const courseDetailsSection = getSectionByType("requirements");
 
   if (loading) return <p className="text-center py-10">Loading...</p>;
   if (error) return <p className="text-center text-red-500">{error}</p>;
@@ -37,6 +37,7 @@ const ProductPage = () => {
         <HowTheCourse features={featureSection} />
         <WhatYouWillLearn pointers={pointerSection} />
         <CourseExecutiveFeature exclusiveFeatures={exclusiveFeaturesSection} />
+        <CourseDetails courseDetails={courseDetailsSection} />
       </div>
 
       {/* Right Layout */}

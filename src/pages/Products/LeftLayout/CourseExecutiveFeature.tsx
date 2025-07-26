@@ -13,7 +13,7 @@ const CourseExecutiveFeature = ({
       </h2>
 
       {/* container */}
-      <div className="border border-gray-300 grid lg:px-8 px-6 rounded-lg mt-4">
+      <div className="border border-gray-300 grid lg:px-8 lg:py-5 py-3 px-6 rounded-lg mt-4">
         {exclusiveFeatures?.values?.map((item, index) => (
           <div
             className="border-b border-b-gray-300 last:border-b-0 py-5"
