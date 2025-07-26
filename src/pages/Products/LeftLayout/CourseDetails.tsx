@@ -17,6 +17,7 @@ const CourseDetails = ({ courseDetails }: { courseDetails?: Section }) => {
         <p className="flex items-center gap-2 text-gray-600 lg:text-lg">
           <CheckIcon className="w-6 h-6" /> স্মার্টফোন অথবা পিসি
         </p>
+        
       </div>
     </div>
   );

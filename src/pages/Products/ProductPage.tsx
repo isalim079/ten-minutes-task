@@ -46,7 +46,10 @@ const ProductPage = () => {
 
         {/* Right Layout */}
         <div className="lg:col-span-1">
-          <Trailer media={productsData?.media} checkList={productsData?.checklist} />
+          <Trailer
+            media={productsData?.media}
+            checkList={productsData?.checklist}
+          />
         </div>
       </div>
     </div>
