@@ -5,6 +5,7 @@ import Instructor from "./LeftLayout/Instructor";
 import HowTheCourse from "./LeftLayout/HowTheCourse";
 import WhatYouWillLearn from "./LeftLayout/WhatYouWillLearn";
 import { useProductsData } from "../../hooks/useProductsData";
+import CourseExecutiveFeature from "./LeftLayout/CourseExecutiveFeature";
 
 const ProductPage = () => {
   const [lang, setLang] = useState<"en" | "bn">("en");
@@ -17,6 +18,7 @@ const ProductPage = () => {
   const instructorSection = getSectionByType("instructors");
   const featureSection = getSectionByType("features");
   const pointerSection = getSectionByType("pointers");
+  const exclusiveFeaturesSection = getSectionByType("feature_explanations");
 
   console.log(productsData);
 
@@ -34,6 +36,7 @@ const ProductPage = () => {
         <Instructor instructorInfo={instructorSection} />
         <HowTheCourse features={featureSection} />
         <WhatYouWillLearn pointers={pointerSection} />
+        <CourseExecutiveFeature exclusiveFeatures={exclusiveFeaturesSection} />
       </div>
 
       {/* Right Layout */}
