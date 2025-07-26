@@ -5,7 +5,6 @@ const Instructor = ({
 }: {
   instructorInfo?: Section;
 }) => {
-  console.log(instructorInfo);
 
   return (
     <div className="mt-10">
@@ -16,10 +15,9 @@ const Instructor = ({
         {/* left side */}
         <div className="">
           <img
-            loading="lazy"
             className="rounded-full w-[76px] h-[76px]"
-            src={instructorInfo?.values?.[0]?.image || ""}
-            alt={instructorInfo?.values?.[0]?.name}
+            src={instructorInfo?.values?.[0]?.image}
+            alt={instructorInfo?.values?.[0]?.name || ""}
           />
         </div>
         {/* right side */}

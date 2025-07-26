@@ -7,6 +7,7 @@ import WhatYouWillLearn from "./LeftLayout/WhatYouWillLearn";
 import { useProductsData } from "../../hooks/useProductsData";
 import CourseExecutiveFeature from "./LeftLayout/CourseExecutiveFeature";
 import CourseDetails from "./LeftLayout/CourseDetails";
+import Trailer from "./RightSide/Trailer";
 
 const ProductPage = () => {
   const [lang, setLang] = useState<"en" | "bn">("en");
@@ -26,22 +27,28 @@ const ProductPage = () => {
   if (error) return <p className="text-center text-red-500">{error}</p>;
 
   return (
-    <div className="max-w-7xl mx-auto grid lg:grid-cols-3 gap-10 py-10">
-      {/* Left Layout */}
-      <div className="lg:col-span-2">
-        <TitleDescription
-          title={productsData?.title}
-          description={productsData?.description}
-        />
-        <Instructor instructorInfo={instructorSection} />
-        <HowTheCourse features={featureSection} />
-        <WhatYouWillLearn pointers={pointerSection} />
-        <CourseExecutiveFeature exclusiveFeatures={exclusiveFeaturesSection} />
-        <CourseDetails courseDetails={courseDetailsSection} />
-      </div>
+    <div>
+      <TitleDescription
+        title={productsData?.title}
+        description={productsData?.description}
+      />
+      <div className="max-w-7xl mx-auto grid lg:grid-cols-3 gap-10 pb-10">
+        {/* Left Layout */}
+        <div className="lg:col-span-2">
+          <Instructor instructorInfo={instructorSection} />
+          <HowTheCourse features={featureSection} />
+          <WhatYouWillLearn pointers={pointerSection} />
+          <CourseExecutiveFeature
+            exclusiveFeatures={exclusiveFeaturesSection}
+          />
+          <CourseDetails courseDetails={courseDetailsSection} />
+        </div>
 
-      {/* Right Layout */}
-      <div className="lg:col-span-1">Right section</div>
+        {/* Right Layout */}
+        <div className="lg:col-span-1">
+          <Trailer media={productsData?.media} />
+        </div>
+      </div>
     </div>
   );
 };
