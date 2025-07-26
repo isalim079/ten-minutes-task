@@ -1,10 +1,16 @@
 import { useState } from "react";
-import type { Medium } from "../../../types/product";
+import type { Checklist, Medium } from "../../../types/product";
 import PlayIcon from "../../../assets/icons/playIcon.svg?react";
 import LeftIcon from "../../../assets/icons/leftIcon.svg?react";
 import RightIcon from "../../../assets/icons/rightIcon.svg?react";
 
-const Trailer = ({ media }: { media?: Medium[] }) => {
+const Trailer = ({
+  media,
+  checkList,
+}: {
+  media?: Medium[];
+  checkList?: Checklist[];
+}) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [playVideo, setPlayVideo] = useState(false);
 
@@ -66,6 +72,7 @@ const Trailer = ({ media }: { media?: Medium[] }) => {
           <div className="flex gap-2 overflow-x-hidden px-1 mt-3">
             {media?.map((item, index) => (
               <img
+                key={index}
                 onClick={() => setCurrentIndex(index)}
                 className={`w-[40px] object-cover h-[30px] rounded-sm cursor-pointer ${currentIndex === index ? "border-2 border-green-500" : ""}`}
                 src={
@@ -79,8 +86,24 @@ const Trailer = ({ media }: { media?: Medium[] }) => {
         </div>
 
         {/* details container */}
-        <div>
-            
+        <div className="px-4 mt-5">
+          <div className="font-semibold lg:text-2xl">৳1000</div>
+          <button className="bg-green-600 mt-3 font-semibold text-white w-full py-3 rounded-lg border-b-4 border-b-green-700 hover:bg-green-700">
+            Enroll
+          </button>
+
+          {/* what is in course */}
+          <div className="mt-10 pb-6">
+            <p className="lg:text-xl font-semibold mb-4">এই কোর্সে যা থাকছে</p>
+            <div className="space-y-2">
+              {checkList?.map((item, index) => (
+                <div className="flex items-center gap-3" key={index}>
+                  <img className="shrink-0 w-5 h-5" src={item?.icon} alt="" />
+                  <p className="lg:text-lg">{item?.text}</p>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </div>
