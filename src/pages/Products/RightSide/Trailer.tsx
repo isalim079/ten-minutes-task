@@ -68,7 +68,7 @@ const Trailer = ({
               {currentItem?.resource_type === "video" && playVideo ? (
                 <iframe
                   src={`https://www.youtube.com/embed/${currentItem.resource_value}?autoplay=1`}
-                  className="w-full h-[220px]"
+                  className="w-full h-[220px] relative z-10"
                   allow="autoplay; encrypted-media"
                   allowFullScreen
                 ></iframe>
@@ -80,11 +80,11 @@ const Trailer = ({
                 />
               )}
 
-              {/* Play button */}
+              {/* buttons */}
               <div
-                className={`absolute inset-0 flex items-center justify-between px-3 ${currentItem?.resource_type === "video" ? "bg-black/40 hover:bg-black/50" : ""}`}
+                className={`absolute inset-0 flex items-center justify-between px-3 ${(currentItem?.resource_type === "video" && !playVideo) ? "bg-black/40 hover:bg-black/50" : ""}`}
               >
-                <button className="cursor-pointer " onClick={handlePrev}>
+                <button className="cursor-pointer relative z-20" onClick={handlePrev}>
                   <LeftIcon />
                 </button>
                 {currentItem.resource_type === "video" && !playVideo && (
@@ -92,7 +92,7 @@ const Trailer = ({
                     <PlayIcon className="w-12 h-12 cursor-pointer" />
                   </button>
                 )}
-                <button className="cursor-pointer" onClick={handleNext}>
+                <button className="cursor-pointer relative z-20" onClick={handleNext}>
                   <RightIcon />
                 </button>
               </div>
