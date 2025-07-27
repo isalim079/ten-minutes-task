@@ -21,7 +21,7 @@ const ProductPage = () => {
   const featureSection = getSectionByType("features");
   const pointerSection = getSectionByType("pointers");
   const exclusiveFeaturesSection = getSectionByType("feature_explanations");
-  const courseDetailsSection = getSectionByType("requirements");
+  const courseDetailsSection = getSectionByType("about");
 
   if (loading) return <p className="text-center py-10">Loading...</p>;
   if (error) return <p className="text-center text-red-500">{error}</p>;
