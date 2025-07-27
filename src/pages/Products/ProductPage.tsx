@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { useState } from "react";
+// import { useState } from "react";
 import TitleDescription from "./LeftLayout/TitleDescription";
 import Instructor from "./LeftLayout/Instructor";
 import HowTheCourse from "./LeftLayout/HowTheCourse";
@@ -10,8 +10,8 @@ import CourseDetails from "./LeftLayout/CourseDetails";
 import Trailer from "./RightSide/Trailer";
 
 const ProductPage = () => {
-  const [lang, setLang] = useState<"en" | "bn">("en");
-  const { productsData, loading, error } = useProductsData(lang);
+  // const [lang, setLang] = useState<"en" | "bn">("en");
+  const { productsData, loading, error } = useProductsData("en");
 
   /* filtering specific sections data */
   const getSectionByType = (type: string) =>
